@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/listgrad"
+    >
+
+    <!-- Top Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <!-- Top Left Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name" />
+
+            <EditText
+                android:id="@+id/editTextLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Last Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class" />
+
+            <EditText
+                android:id="@+id/editTextClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Class" />
+        </LinearLayout>
+
+        <!-- Top Right Image -->
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_gravity="top|right"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <!-- Middle Section -->
+    <EditText
+        android:id="@+id/editTextRemarks"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:hint="Remarks"
+        android:gravity="top"
+        android:layout_margin="10dp"/>
+
+    <!-- Bottom Section -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+</LinearLayout>
