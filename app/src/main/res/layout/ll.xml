@@ -10,79 +10,79 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
 
         <!-- Top Left Section -->
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Products:" />
+        <!--<LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/thelayout"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv0"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_gravity="top|left"
+                    android:padding="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/pricem0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name Price" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description" />
+                </LinearLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="100dp"/>
+            </LinearLayout>
             <TextView
+                android:id="@+id/abcd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name" />
-
-            <EditText
-                android:id="@+id/editTextName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Name" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last Name" />
-
-            <EditText
-                android:id="@+id/editTextLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Last Name" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Class" />
-
-            <EditText
-                android:id="@+id/editTextClass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Class" />
-        </LinearLayout>
-
-        <!-- Top Right Image -->
-        <ImageView
-            android:id="@+id/iv"
+                android:text="BASICList" />
+        </LinearLayout>-->
+        <!--<TextView
+            android:id="@+id/abc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_gravity="top|right"
-            android:padding="10dp" />
+            android:text="LISTview_is_next" />-->
+
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ListView>
     </LinearLayout>
-
-    <!-- Middle Section -->
-    <EditText
-        android:id="@+id/editTextRemarks"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:hint="Remarks"
-        android:gravity="top"
-        android:layout_margin="10dp"/>
-
-    <!-- Bottom Section -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text="Description" />
 </LinearLayout>

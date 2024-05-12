@@ -9,12 +9,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +30,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import androidx.annotation.Nullable;
 
@@ -37,17 +43,18 @@ public class Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ll);
 
-        TextView t = ((TextView)findViewById(R.id.message));
-        t.setText(getString(R.string.sample));
-
+        fetch("localhost:8080",false);
     }
 
-    private String s = null;
-    private String ss = null;
-    private String sss = null;
+    private int count = -1;
+    private LinkedList<Product> list = null;
+    private JSONArray arr = null;
+    private JSONObject li = null;
+
     public void fetch(String url,Boolean use){
         final TextView tv = ((TextView)findViewById(R.id.message));
-        final ImageView iv = ((ImageView)findViewById(R.id.iv));
+        final ImageView iv = ((ImageView)findViewById(R.id.iv0));
+        final ListView lv = (ListView)findViewById(R.id.lv);
         new Thread(){
             @Override
             public void run() {
@@ -61,16 +68,35 @@ public class Main extends Activity {
                 try {
                     if(!use)
                         j = new JSONObject(getString(R.string.sample));
-                    ss = j.getJSONObject("debug").getString("id");
-                    sss = j.getJSONObject("debug").getString("login");
-                    s = j.getString("error");
+                    count = j.getInt("count");
+                    arr = j.getJSONArray("li");
+                    list = new LinkedList<>();
+
+                    for(int i = 0;i < count ;i++){
+                        li = arr.getJSONObject(i);
+                        list.add(new Product(li.getInt("id")
+                                , li.getString("name")
+                                , "todo update sample String"
+                                , li.getDouble("price")
+                                , li.getInt("quantity")
+                                , li.getString("state"))
+                        );
+
+                    }
 
                 } catch (JSONException e) {throw new RuntimeException(e);}
 
                 tv.post(new Runnable() {
                     @Override
                     public void run() {
-                        tv.setText(ss+"\n"+sss+"\n"+s);
+                        ProductAdapter adapter =  new ProductAdapter(
+                                lv.getContext()
+                                ,R.layout.layout
+                                ,list
+                        );
+                        lv.setAdapter(adapter);
+                        //tv.setText( list.get(0).getDesc());
+
                     }
                 });
             }
