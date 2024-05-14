@@ -37,13 +37,20 @@ import java.util.Objects;
 import androidx.annotation.Nullable;
 
 public class Main extends Activity {
-
+    private ApiClient ac = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ll);
 
-        fetch("localhost:8080",false);
+
+        ac = new ApiClient();
+        ApiClient.fetchData("http://192.168.100.79:8080/api",ac);
+        while(ac.response123 != null && ac.response123.equals(""))
+            Log.v("DATA" , ac.response123);
+        Log.v("DATA" , "?QKL?"+ac.response123);
+        //fetch and sets the listview
+        fetch("http://192.168.100.79:8080/api",true);
     }
 
     private int count = -1;
@@ -62,12 +69,17 @@ public class Main extends Activity {
                 //s = j.getJSONObject("debug").getString("id");
                 JSONObject j = null;
                 if(use) {
-                    HttpData hd = new HttpData(url,iv);
-                    j = hd.getData();
+                    //HttpData hd = new HttpData(url);
+                    //j = hd.getData();
                 }
                 try {
+                    if(use) {
+
+                        j = new JSONObject(ac.response123);
+                    }
                     if(!use)
                         j = new JSONObject(getString(R.string.sample));
+                    Log.d("DEBUUUG",j.toString());
                     count = j.getInt("count");
                     arr = j.getJSONArray("li");
                     list = new LinkedList<>();
@@ -76,7 +88,7 @@ public class Main extends Activity {
                         li = arr.getJSONObject(i);
                         list.add(new Product(li.getInt("id")
                                 , li.getString("name")
-                                , "todo update sample String"
+                                , li.getString("desc")
                                 , li.getDouble("price")
                                 , li.getInt("quantity")
                                 , li.getString("state"))

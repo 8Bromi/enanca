@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">tpenca</string>
-    <string name="sample0">{\"debug\":{\"login\":\"test\",\"passwd\":\"test\",\"id\":\"xxxx\"},\"error\":\"Cannot find your authentication data in our Database. Please send a request to Admin to explain your issue.\"}</string>
+    <!--<string name="sample0">{\"debug\":{\"login\":\"test\",\"passwd\":\"test\",\"id\":\"xxxx\"},\"error\":\"Cannot find your authentication data in our Database. Please send a request to Admin to explain your issue.\"}</string>-->
     <string name="sample">{\"li\":[{\"id\":1,\"name\":\"chargeur65W\",\"desc\":\"chargeur pc\",\"price\":100.0,\"quantity\":1,\"state\":\"STOCK\"},{\"id\":2,\"name\":\"Souris-3clefs\",\"desc\":\",havic optical\",\"price\":21.5,\"quantity\":5,\"state\":\"STOCK\"}],\"count\":2}</string>
 </resources>

@@ -28,12 +28,10 @@ public class HttpData  {
     BufferedReader r = null;
     String result = null;
     URL url = null;
-    ImageView imgv = null;
-    public HttpData(String u,ImageView imgvv){
+    public HttpData(String u){
         try {//
-            this.imgv = imgvv;
-            url = new URL(u);
-        } catch (MalformedURLException e) {url = null;}
+            url = new URL("http://192.168.100.79:8080/api");
+        } catch (MalformedURLException e) {url = null;Log.e("MALFORMATEDURL","MAL FORMATED URL");}
     }
     public JSONObject getData() {
         setConn();
@@ -53,13 +51,11 @@ public class HttpData  {
 
     public void setConn() {
         try {
-            if(url == null)
-                url = new URL("https://belatar.name/rest/profile.php?login=test&passwd=test&id=xxxx");
             conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod("GET");
             conn.setChunkedStreamingMode(0);
-            Log.v("Success", "Conn");
+            Log.v("Success", "COOOON");
         } catch (Exception e) {
             Log.e("Err", "Conn");
         }
@@ -81,7 +77,7 @@ public class HttpData  {
             in = new BufferedInputStream(conn.getInputStream());
             Log.v("Success", "In");
         } catch (IOException e) {
-            Log.e("Err", "in");
+            Log.e("Err", "in"+e.getMessage());
         }
     }
 
